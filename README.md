@@ -12,6 +12,20 @@ NaviGraph deliberately avoids this. There are no external evaluator nodes. Quali
 
 ---
 
+## Key Features
+
+- **True ReAct Reasoning Loop**: Autonomous single-agent decision making without external evaluator/critic bottleneck nodes.
+- **Hybrid Retrieval (RAG)**: Combined vector semantic search (FAISS with `gemini-embedding-001`) and keyword search (BM25) via LangChain's `EnsembleRetriever` (60% vector / 40% keyword).
+- **Web Search Integration**: Automated web fallback retrieval using the Tavily API when internal knowledge base search yields insufficient information.
+- **LLM Automatic Fallback**: Primary generation using Google Gemini 2.0 Flash with automatic, seamless failover to Groq (Llama 3.3 70B) upon rate limits or errors.
+- **Document Ingestion Pipeline**: In-app PDF/TXT document upload, recursive text chunking, embedding generation, and live FAISS index rebuilding.
+- **Real-Time Token & Thought Streaming**: Server-Sent Events (SSE) streaming both individual token responses and live node-by-node agent execution ("thinking steps").
+- **Persistent Conversation Memory**: Durable graph state checkpointer (`SqliteSaver`) paired with thread session metadata tracking (`SessionStore`).
+- **LangSmith Tracing**: Deep observability and execution tracing grouped by session threads for prompt debugging and latency monitoring.
+- **Modern Interactive UI**: Streamlit-based frontend featuring multi-session management, auto-titling, live thinking step accordions, and document upload management.
+
+---
+
 ## Graph Workflow
 
 ```mermaid

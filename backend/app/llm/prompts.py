@@ -1,5 +1,3 @@
-# llm/prompts.py
-
 AGENT_SYSTEM_PROMPT = """You are a helpful research assistant with access to two tools:
 
 1. **vector_search** — Searches the internal knowledge base (uploaded documents).
